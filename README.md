@@ -1,7 +1,7 @@
 # On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills
 
-For the anynomous review purpose, we do not explicitly put a github link in the paper. Instead, we include the codes as part of supplementary materials. If the paper is finally accepted, we will open-source the codes and data. Since we are only allowed 100MB for the supplementary materials, we only add the demonstration and testing data for the Door task.
-
+Project webpage: [KODex](https://sites.google.com/view/kodex-corl)
+Paper link: [On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills](https://arxiv.org/abs/2303.13446)
 ## Environment Setup
 
 Please refer to DAPG project to setup the Mujoco environment: [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://github.com/aravindr93/hand_dapg).
@@ -83,9 +83,7 @@ $ cd Relocation/
 $ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Relocate_task.pickle --num_demo 200 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file None --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle --folder_name Results/New_policy/
 ```
 
-If you find our work useful to your research, please consider citing our work:
-
-**Bibtex**:
+## Bibtex
 ```
 @article{han2023KODex,
   title={On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills},
