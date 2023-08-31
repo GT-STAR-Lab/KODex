@@ -15,9 +15,9 @@ $ conda activate mjrl-env
 $ pip install geometric-fabrics-torch/dist/geometric_fabrics_torch-0.0.0-py2.py3-none-any.whl --force
 ```
 Please make sure that you switch to the conda environment where you installed DAPG dependencies. If you followed the instructions from DAPG project, it should be *mjrl-env*. In addtion, for Object Relocation and Tool Use tasks, the return of *get_obs()* functions under each env-py files need to be replaced with following:
-```
-relocate_v0.py: return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])  
-hammer_v0.py: return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])
+
+1. In relocate_v0.py: change to `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])`  
+2. In hammer_v0.py: change to `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
 ```
 ### Door
 To visulize each trained policy on the test set
