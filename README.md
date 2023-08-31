@@ -84,6 +84,7 @@ $ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Rel
 ```
 
 If you find our work useful to your research, please consider citing our work:
+
 **Bibtex**:
 ```
 @article{han2023KODex,
