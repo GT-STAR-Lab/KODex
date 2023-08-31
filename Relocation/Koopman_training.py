@@ -354,26 +354,6 @@ def main(env_name, demo_file, num_demo, koopmanoption, velocity, save_matrix, ma
                 frame.set_facecolor('0.9')
                 frame.set_edgecolor('0.9')
                 plt.savefig(fig_path_simu_goal_unseen)
-                # x = np.arange(0, computed_joints_unseen.shape[1])
-                # for i in range(num_hand):
-                #     plt.figure(110 + i)
-                #     plt.axes(frameon=0)
-                #     plt.grid()
-                #     if error_calc == 'median':  # plot median/percentile 
-                #         plt.plot(x, np.median(computed_joints_unseen[i], axis = 1), linewidth=2, label = 'Koopman rollout', color='#B22400')
-                #         plt.fill_between(x, np.percentile(computed_joints_unseen[i], 25, axis = 1), np.percentile(computed_joints_unseen[i], 75, axis = 1), alpha = 0.15, linewidth = 0, color='#B22400')
-                #         plt.plot(x, np.median(demo_joint_unseen[i], axis = 1), linewidth=2, label = 'Demo', color='#F22BB2')
-                #         plt.fill_between(x, np.percentile(demo_joint_unseen[i], 25, axis = 1), np.percentile(demo_joint_unseen[i], 75, axis = 1), alpha = 0.15, linewidth = 0, color='#F22BB2')
-                #     else:  # plot mean 
-                #         plt.plot(x, np.mean(computed_joints_unseen[i], axis = 1), linewidth=2, label = 'Koopman rollout', color='#B22400')
-                #         plt.plot(x, np.mean(demo_joint_unseen[i], axis = 1), linewidth=2, label = 'Demo', color='#F22BB2')
-                #     plt.xlabel('Time step')
-                #     plt.ylabel('Joint%d'%(i))
-                #     legend = plt.legend()
-                #     frame = legend.get_frame()
-                #     frame.set_facecolor('0.9')
-                #     frame.set_edgecolor('0.9')
-                #     plt.savefig(fig_hand_joints_unseen_demo[i])
                 with open(''.join(fig_path_tmp[:-1]) + 'success.txt', 'w') as f:
                     f.write(success_rate)
         # plt.show()

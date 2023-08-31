@@ -62,17 +62,7 @@ class DraftedObservable(object):
         return obs
     
     def compute_observable(self, num_hand, num_obj):
-        """
-        Observation functions: original states, original states^2, cross product of hand states
-        """
-        # return int(2 * (num_hand + num_obj) + (num_hand - 1) * num_hand / 2 + num_obj + num_hand ** 2)  # include the second-order cross-product polynomial terms for hand_states and cubic terms
-        # return int(3 * (num_hand + num_obj) + (num_hand - 1) * num_hand / 2)  # include the second-order cross-product polynomial terms for hand_states and cubic terms
-        # return int(2 * (num_hand + num_obj))  # simplest version
-        # return int(2 * (num_hand + num_obj) + (num_hand - 1) * num_hand / 2)  # include the second-order cross-product polynomial terms for hand_states
-        # return int(2 * (num_hand + num_obj) + (num_obj - 1) * num_obj / 2)  # include the second-order cross-product polynomial terms for hand_states
         return int(2 * (num_hand + num_obj) + (num_obj - 1) * num_obj / 2 + (num_hand - 1) * num_hand / 2 + num_hand + num_obj ** 2)  
-        # include the second-order cross-product polynomial terms for hand_states
-        # return np.array([x[0], x[1], x[0]**2, (x[0]**2)*x[1], u[0]])
 
 class MLPObservable(object):
     def __init__(self, num_handStates, num_objStates, param):
