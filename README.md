@@ -1,4 +1,5 @@
 # On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills
+This is a repository containing the code for the paper "On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills", which has been accepted as an <strong>oral presentation</strong> at CoRL 2023.
 
 Project webpage: [KODex](https://sites.google.com/view/kodex-corl)
 
