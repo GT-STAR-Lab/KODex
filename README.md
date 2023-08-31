@@ -65,4 +65,19 @@ $ MJPL python3 Koopman_training.py --env_name door-v0 --demo_file ./Data/Demonst
 For other baselines, the ways to train new policies are simiar as KODex. Note that NGF is currently not available for training.
 
 ### Tool Use, Object Relocation, In-hand Reorientation
-For these tasks, we only provide with the codes due to the size limitation.
+For these tasks, we also provide with the demonstration data under `Data` folder of each task module. Therefore, you can use the similar commands as above to visualze the trained KODex policy or train a new KODex policy. For example, to visualize the KODex policy for Relocation task:
+
+**Testing**:
+```
+$ conda activate mjrl-env
+$ cd Relocation/
+$ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Relocate_task.pickle --num_demo 0 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file ./Results/KODex/koopmanMatrix.npy --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle
+```
+
+And to train a new KOdex policy for Relocation task:
+**Training**:
+```
+$ conda activate mjrl-env
+$ cd Relocation/
+$ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Relocate_task.pickle --num_demo 200 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file None --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle --folder_name Results/New_policy/
+```

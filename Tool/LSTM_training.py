@@ -67,8 +67,7 @@ def main(env_name, demo_file, num_demo, koopmanoption, velocity, save_matrix, ma
     number_sample = 100  # num of unseen samples used for test
     seed = int(seed)
     first_demo = int(first_demo)
-    # Keep using this controller
-    Controller_loc = 'Results/Drafted/Hammer/11_10_2022_22_07_15/PID_NN/NN_controller_best.pt'
+    Controller_loc = 'Results/Controller/NN_controller_best.pt'
     multiple_test = True
     if env_name is "":
         print("Unknown env.")
