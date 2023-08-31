@@ -18,6 +18,7 @@ Please make sure that you switch to the conda environment where you installed DA
 
 1. In relocate_v0.py: change to `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])`  
 2. In hammer_v0.py: change to `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
+
 ```
 ### Door
 To visulize each trained policy on the test set
