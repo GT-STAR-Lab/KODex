@@ -87,10 +87,11 @@ $ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Rel
 
 ## Bibtex
 ```
-@article{han2023KODex,
+@inproceedings{han2023KODex,
   title={On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills},
   author={Han, Yunhai and Xie, Mandy and Zhao, Ye and Ravichandar, Harish},
-  journal={arXiv preprint arXiv:2303.13446},
-  year={2023}
+  booktitle={Conference on Robot Learning},
+  year={2023},
+  organization={PMLR}
 }
 ```
