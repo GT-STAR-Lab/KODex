@@ -21,7 +21,11 @@ Please make sure that you switch to the conda environment where you installed DA
 1. In relocate_v0.py: `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos])` is replaced with `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])`  
 2. In hammer_v0.py: `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact])])` is replaced with `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
 
-Additional, In KODex, we assume the initial object position is fixed. So, in relocate_v0.py, change the initial xy pos of the ball to be 0: `self.model.body_pos[self.obj_bid,0] = 0`; `self.model.body_pos[self.obj_bid,1] = 0`. 
+Additional, In KODex, we assume the initial object position is fixed. So, in relocate_v0.py, change the initial xy pos of the ball to be 0: 
+
+1. line85: `self.model.body_pos[self.obj_bid,0] = 0`
+
+2. line86: `self.model.body_pos[self.obj_bid,1] = 0`
 
 Lastly, you have to add the following functions to each  env-py file:
 
@@ -72,7 +76,6 @@ Lastly, you have to add the following functions to each  env-py file:
 
     def get_full_obs_visualization(self):  
         qp = self.data.qpos.ravel()
-        # obj_Txyz = qp[-6:-3] is very similar to obj_pos in get_obs()
         qv = self.data.qvel.ravel()
         return np.concatenate([qp, qv])
 ```
