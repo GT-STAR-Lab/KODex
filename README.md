@@ -21,17 +21,79 @@ Please make sure that you switch to the conda environment where you installed DA
 1. In relocate_v0.py: `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos])` is replaced with `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])`  
 2. In hammer_v0.py: `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact])])` is replaced with `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
 
-In addtion, you have to add the following functions to each  env-py file:
+Additional, In KODex, we assume the initial object position is fixed. So, in relocate_v0.py, change the initial xy pos of the ball to be 0: `self.model.body_pos[self.obj_bid,0] = 0`; `self.model.body_pos[self.obj_bid,1] = 0`. 
 
-1. In hammer_v0.py: add 
+Lastly, you have to add the following functions to each  env-py file:
+
+1. In hammer_v0.py:
 ```python 
-def KoopmanVisualize(self, state_dict):
+    def KoopmanVisualize(self, state_dict):
+        # visualize the koopman trajectory
+        qp = state_dict['qpos']
+        qv = state_dict['qvel']
+        board_pos = state_dict['board_pos']
+        self.set_state(qp, qv)
+        self.model.body_pos[self.model.body_name2id('nail_board')] = board_pos
+        self.sim.forward()
+
+    def get_full_obs_visualization(self):  
+        qp = self.data.qpos.ravel()
+        qv = self.data.qvel.ravel()
+        return np.concatenate([qp, qv])
+```
+
+2. In door_v0.py:
+```python 
+    def KoopmanVisualize(self, state_dict):
         # visualize the koopman trajectory
         qp = state_dict['qpos']
         qv = state_dict['qvel']
         self.set_state(qp, qv)
         self.model.body_pos[self.door_bid] = state_dict['door_body_pos']
         self.sim.forward()
+
+    def get_full_obs_visualization(self):  
+        qp = self.data.qpos.ravel()
+        qv = self.data.qvel.ravel()
+        return np.concatenate([qp, qv])
+```
+
+3. In relocate_v0.py:
+```python 
+    def KoopmanVisualize(self, state_dict):
+        qp = state_dict['qpos']
+        qv = state_dict['qvel']
+        self.set_state(qp, qv)
+        obj_pos = state_dict['obj_pos']
+        target_pos = state_dict['target_pos']
+        self.model.body_pos[self.obj_bid] = obj_pos
+        self.model.site_pos[self.target_obj_sid] = target_pos
+        self.sim.forward()
+
+    def get_full_obs_visualization(self):  
+        qp = self.data.qpos.ravel()
+        # obj_Txyz = qp[-6:-3] is very similar to obj_pos in get_obs()
+        qv = self.data.qvel.ravel()
+        return np.concatenate([qp, qv])
+```
+
+4. In pen_v0.py:
+```python 
+    def KoopmanVisualize(self, state_dict):
+        qp = self.init_qpos.copy()
+        qp = state_dict['qpos']
+        qv = self.init_qvel.copy()
+        qv = state_dict['qvel']
+        self.set_state(qp, qv)
+        desired_orien = state_dict['desired_orien']
+        self.model.body_quat[self.target_obj_bid] = euler2quat(desired_orien)
+        self.sim.forward()
+
+    def get_full_obs_visualization(self): 
+        qp = self.data.qpos.ravel()
+        qv = self.data.qvel.ravel()
+        return np.concatenate([qp, qv])
+
 ```
 ### Door
 To visulize each trained policy on the test set
