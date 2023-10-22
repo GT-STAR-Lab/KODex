@@ -6,7 +6,7 @@ Project webpage: [KODex](https://sites.google.com/view/kodex-corl)
 Paper link: [On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills](https://arxiv.org/abs/2303.13446)
 ## Environment Setup
 
-Please refer to DAPG project to setup the Mujoco environment: [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://github.com/aravindr93/hand_dapg).
+Please refer to DAPG project to setup the Mujoco environment: [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://github.com/aravindr93/hand_dapg). Note that we are not aware if our codes support the latest mj_envs envinronment, so we recomment install v1.0.0 of mj_envs, which is the one used before.
 
 
 ## KODex 
@@ -20,6 +20,9 @@ Please make sure that you switch to the conda environment where you installed DA
 
 1. In relocate_v0.py: `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos])` is replaced with `return np.concatenate([qp[:-6], palm_pos-obj_pos, palm_pos-target_pos, obj_pos-target_pos, obj_pos, palm_pos, target_pos])`  
 2. In hammer_v0.py: `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact])])` is replaced with `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
+
+In addtion, you have to add the following functions to each  env-py file:
+1. In hammer_v0.py: add `def KoopmanVisualize(self, state_dict):        # visualize the koopman trajectory        qp = state_dict['qpos']        qv = state_dict['qvel']        board_pos = state_dict['board_pos']        self.set_state(qp, qv)        self.model.body_pos[self.model.body_name2id('nail_board')] = board_pos        self.sim.forward()`
 
 ### Door
 To visulize each trained policy on the test set
