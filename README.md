@@ -22,8 +22,17 @@ Please make sure that you switch to the conda environment where you installed DA
 2. In hammer_v0.py: `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact])])` is replaced with `return np.concatenate([qp[:-6], qv[-6:], palm_pos, obj_pos, obj_rot, target_pos, np.array([nail_impact]), goal_pos, tool_pos - target_pos])`
 
 In addtion, you have to add the following functions to each  env-py file:
-1. In hammer_v0.py: add `def KoopmanVisualize(self, state_dict):        # visualize the koopman trajectory        qp = state_dict['qpos']        qv = state_dict['qvel']        board_pos = state_dict['board_pos']        self.set_state(qp, qv)        self.model.body_pos[self.model.body_name2id('nail_board')] = board_pos        self.sim.forward()`
 
+1. In hammer_v0.py: add 
+```python 
+def KoopmanVisualize(self, state_dict):
+        # visualize the koopman trajectory
+        qp = state_dict['qpos']
+        qv = state_dict['qvel']
+        self.set_state(qp, qv)
+        self.model.body_pos[self.door_bid] = state_dict['door_body_pos']
+        self.sim.forward()
+```
 ### Door
 To visulize each trained policy on the test set
 
