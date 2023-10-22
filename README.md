@@ -32,7 +32,6 @@ Lastly, you have to add the following functions to each  env-py file:
 1. In hammer_v0.py:
 ```python 
     def KoopmanVisualize(self, state_dict):
-        # visualize the koopman trajectory
         qp = state_dict['qpos']
         qv = state_dict['qvel']
         board_pos = state_dict['board_pos']
