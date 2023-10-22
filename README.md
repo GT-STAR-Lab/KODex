@@ -97,7 +97,7 @@ Lastly, you have to add the following functions to each  env-py file:
         qv = self.data.qvel.ravel()
         return np.concatenate([qp, qv])
 ```
-As far as we know, after you make these changes, you should be able to run the following experiments. If you still get some unexpected issues, feel free to leave an issue or contact us via email!
+As far as we know, after you make these changes, you should be able to run the following experiments. If you still get some unexpected errors, feel free to leave an issue or contact us via email!
 
 ### Door
 To visulize each trained policy on the test set
