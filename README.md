@@ -161,9 +161,9 @@ $ conda activate mjrl-env
 $ cd Relocation/
 $ MJPL python3 Koopman_training.py --env_name relocate-v0 --demo_file ./Data/Relocate_task.pickle --num_demo 200 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file None --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle --folder_name Results/New_policy/
 ```
-**More Testing instances**:
+**More Test instances**:
 
-For each task, we provide with extra 20,000 test instances. You could download them via [this Link](https://drive.google.com/file/d/12heE7bgf0NvU0TAmhgtRCNCNrpzjLEp6/view?usp=sharing), and then specify the demo_file location when running the commands.
+For each task, we also provide with extra 20,000 test instances. You could download them via [this Link](https://drive.google.com/file/d/12heE7bgf0NvU0TAmhgtRCNCNrpzjLEp6/view?usp=sharing), and then specify the demo_file location when running the commands.
 ## Bibtex
 ```
 @inproceedings{han2023KODex,
