@@ -138,7 +138,7 @@ To train a new policy using 200 demonstrations
 ```
 $ conda activate mjrl-env
 $ cd Door/
-$ MJPL python3 Koopman_training.py --env_name door-v0 --demo_file ./Data/Demonstratino.pickle --num_demo 200 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file None --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle --folder_name Results/New_policy/
+$ MJPL python3 Koopman_training.py --env_name door-v0 --demo_file ./Data/Demonstration.pickle --num_demo 200 --koopmanoption Drafted --velocity False --save_matrix True --matrix_file None --control True --error_type demo --visualize True --unseen_test False --rl_policy ./Results/Expert_policy/best_policy.pickle --folder_name Results/New_policy/
 ```
 
 For other baselines, the ways to train new policies are simiar as KODex. Note that NGF is currently not available for training.
