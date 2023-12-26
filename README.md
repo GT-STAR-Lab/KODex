@@ -6,7 +6,7 @@ Project webpage: [KODex](https://sites.google.com/view/kodex-corl)
 Paper link: [On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills](https://arxiv.org/abs/2303.13446)
 ## Environment Setup
 
-Please refer to DAPG project to setup the Mujoco environment: [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://github.com/aravindr93/hand_dapg). Note that we are not aware if our codes support the latest mj_envs envinronment, so we recomment install v1.0.0 of mj_envs, which is the one used before.
+Please refer to DAPG project to setup the Mujoco environment: [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://github.com/aravindr93/hand_dapg). Note that we are not aware if our codes support the latest mj_envs envinronment, so we recomment install v1.0.0 of mj_envs, which is the one used before. Note, we have been aware that to install mj_envs might cause lots of trouble, so we have documented a guidance on the installation process. You could download it here: [install.txt](https://drive.google.com/file/d/1ryYK2K3GFxgVfyzPdN1UeGP-92GzHvQV/view?usp=sharing).
 
 
 ## KODex 
