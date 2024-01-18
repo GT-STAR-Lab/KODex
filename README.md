@@ -169,8 +169,10 @@ For each task, we also provide with extra 20,000 test instances. You could downl
 @inproceedings{han2023KODex,
   title={On the Utility of Koopman Operator Theory in Learning Dexterous Manipulation Skills},
   author={Han, Yunhai and Xie, Mandy and Zhao, Ye and Ravichandar, Harish},
-  booktitle={Conference on Robot Learning},
+  booktitle={Proceedings of The 7th Conference on Robot Learning},
   year={2023},
+  pages={106--126},
+  volume={229},
   organization={PMLR}
 }
 ```
